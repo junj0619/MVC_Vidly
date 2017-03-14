@@ -10,16 +10,20 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
-        private List<Movie> _movies = new List<Movie>
+        private List<Movie> GetMovies()
         {
+            return new List<Movie>()
+            {
             new Movie() {Name = "Shrek"},
             new Movie() {Name = "Wall-e"}
-        };
+            };
+        }
+
 
 
         public ActionResult Index()
         {
-            return View(_movies);
+            return View(GetMovies());
         }
 
         // GET: Movies/Random
