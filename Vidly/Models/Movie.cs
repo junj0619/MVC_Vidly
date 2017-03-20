@@ -16,8 +16,7 @@ namespace Vidly.Models
         [Required]
         [Display(Name = "Release Date")]
         public DateTime? ReleaseDate { get; set; }
-
-        [Required]
+        
         public DateTime? CreatedDate { get; set; }
 
         [Required]
@@ -25,6 +24,8 @@ namespace Vidly.Models
         public int NumberInStock { get; set; }
 
         public Genre Genre { get; set; }
+
+        [Required]
         public int GenreId { get; set; }
     }
 }

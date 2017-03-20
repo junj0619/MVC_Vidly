@@ -259,6 +259,10 @@
     <Compile Include="Migrations\201703150412346_PoplulateGenre.Designer.cs">
       <DependentUpon>201703150412346_PoplulateGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703200109174_AllowNulltoMovieTBCreatedDate.cs" />
+    <Compile Include="Migrations\201703200109174_AllowNulltoMovieTBCreatedDate.Designer.cs">
+      <DependentUpon>201703200109174_AllowNulltoMovieTBCreatedDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -266,6 +270,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsToBeMembership.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -394,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703150412346_PoplulateGenre.resx">
       <DependentUpon>201703150412346_PoplulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703200109174_AllowNulltoMovieTBCreatedDate.resx">
+      <DependentUpon>201703200109174_AllowNulltoMovieTBCreatedDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
