@@ -47,7 +47,7 @@ namespace Vidly.Controllers
                 Genres = geners
             };
 
-            return View("MovieForm",movieViewModel);
+            return View("MovieForm", movieViewModel);
         }
 
         public ViewResult Edit(int id)
@@ -64,6 +64,17 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
+
+            if (!ModelState.IsValid)
+            {
+                var movieViewModal = new MovieFormViewModel()
+                {
+                    Movie = movie,
+                    Genres = _context.Genres
+                };
+                return View("MovieForm", movieViewModal);
+            }
+
             if (movie.Id == 0)
                 _context.Movies.Add(movie);
             else
