@@ -27,28 +27,34 @@ namespace Vidly.Controllers.Api
         }
 
         //Get /api/customerDto/1
-        public CustomerDto GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return Mapper.Map<Customer, CustomerDto>(customer);
+            return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
 
         //Post /api/customers
+        //By RESTful Convention when we create resource the status code should be 201 or created it.
         [HttpPost]
-        public CustomerDto CreateCustomer(CustomerDto customerDto)
+        public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
+
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
             customerDto.Id = customer.Id;
-            return customerDto;
+
+            //As part of RESTful convention,
+            //We need to return the Uri(Unified Resource Identifier) 
+            //of newly created resource to the client.
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         //Put /api/customers/1
