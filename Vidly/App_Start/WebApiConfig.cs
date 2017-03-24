@@ -10,11 +10,12 @@ namespace Vidly
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
-        {
+        {   
+            /* Enable Camel Case output Json */
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
-
+            /******************/
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
