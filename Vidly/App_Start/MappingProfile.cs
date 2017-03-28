@@ -19,6 +19,9 @@ namespace Vidly.App_Start
             //Id during mapping of a MovieDto to Movie.
             Mapper.CreateMap<Movie, MovieDto>().ForMember(m=>m.Id,opt=>opt.Ignore());
             Mapper.CreateMap<MovieDto, Movie>();
+
+            Mapper.CreateMap<MembershipType, MembershipTypeDto>();
+
         }
     }
 }
